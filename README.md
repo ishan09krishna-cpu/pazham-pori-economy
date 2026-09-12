@@ -3,12 +3,11 @@
 # PAZHAM PORI ECONOMY™ 🍌📈
 
 ## Basic Details
-### Team Name: Team Pazham Pori
+### Team Name: Pazham Pori
 
 ### Team Members
-- Team Lead: Ishan Krishna - Govt. Engineering College / Kerala University
-- Member 2: Kunjiraman AI - Autonomous Chai Shop Intelligence
-- Member 3: Pazham Pori Engine - Volatile Snack Equity Bot
+- Team Lead: Ishan Krishna 
+
 
 ### Project Description
 Kerala's most unnecessary financial stock market simulation where local tea-shop snacks (*Pazham Pori, Porotta, Chaya, Parippu Vada, Bhaji, Sambar*) behave like volatile Wall Street equities, combined with a Groq-powered Llama Malayalam AI Meme Engine.
