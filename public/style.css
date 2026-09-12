@@ -1,0 +1,1383 @@
+/* ==========================================================================
+   KUNJIRAMAN AI (🤖 ഡാ AI) - Premium Dark Glassmorphism CSS
+   Hackathon Theme: Useless Project
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Root Tokens & Variables
+   -------------------------------------------------------------------------- */
+:root {
+  --bg-dark: #07090e;
+  --bg-canvas: #0b0f19;
+  --glass-bg: rgba(18, 24, 38, 0.7);
+  --glass-bg-hover: rgba(26, 35, 54, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-glow: rgba(99, 102, 241, 0.4);
+
+  --primary: #6366f1;
+  --primary-glow: rgba(99, 102, 241, 0.3);
+  --secondary: #ec4899;
+  --accent-gold: #f59e0b;
+  --accent-emerald: #10b981;
+  --accent-rose: #f43f5e;
+
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+  --text-dim: #6b7280;
+
+  --user-bubble-bg: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+  --ai-bubble-bg: rgba(23, 31, 49, 0.8);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  --font-family: 'Plus Jakarta Sans', 'Noto Sans Malayalam', system-ui, -apple-system, sans-serif;
+  --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Base Styles
+   -------------------------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.6;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.4);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.7);
+}
+
+/* Ambient Background Glows */
+.ambient-glow {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+}
+
+.glow-1 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+  top: -100px;
+  left: -100px;
+  animation: floatGlow 15s infinite ease-in-out alternate;
+}
+
+.glow-2 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+  bottom: -150px;
+  right: -150px;
+  animation: floatGlow 18s infinite ease-in-out alternate-reverse;
+}
+
+.glow-3 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--accent-gold) 0%, transparent 70%);
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.15;
+}
+
+@keyframes floatGlow {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(40px, 60px) scale(1.1);
+  }
+
+  100% {
+    transform: translate(-30px, -40px) scale(0.95);
+  }
+}
+
+/* Glassmorphism Panel Base */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* --------------------------------------------------------------------------
+   3. Application Container Layout
+   -------------------------------------------------------------------------- */
+.app-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1000px;
+  height: 94vh;
+  margin: 3vh auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 16px;
+}
+
+/* --------------------------------------------------------------------------
+   4. Header Section
+   -------------------------------------------------------------------------- */
+.app-header {
+  border-radius: var(--radius-lg);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: linear-gradient(135deg, rgba(20, 27, 45, 0.8), rgba(15, 20, 32, 0.7));
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.avatar-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.pulse-avatar {
+  animation: pulseGlow 3s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 12px rgba(99, 102, 241, 0.4);
+  }
+
+  100% {
+    box-shadow: 0 0 26px rgba(236, 72, 153, 0.7);
+  }
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.app-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;
+}
+
+.sub-title-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: rgba(99, 102, 241, 0.2);
+  color: #818cf8;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.hackathon-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.tagline {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon-btn,
+.clear-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.icon-btn:hover,
+.clear-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.clear-btn {
+  background: rgba(244, 63, 94, 0.15);
+  border-color: rgba(244, 63, 94, 0.3);
+  color: #fecdd3;
+}
+
+.clear-btn:hover {
+  background: rgba(244, 63, 94, 0.3);
+  border-color: rgba(244, 63, 94, 0.5);
+}
+
+/* --------------------------------------------------------------------------
+   5. Personality Mode Selector
+   -------------------------------------------------------------------------- */
+.mode-bar-container {
+  border-radius: var(--radius-md);
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  overflow-x: auto;
+}
+
+.mode-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.mode-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.mode-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition-fast);
+}
+
+.mode-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-main);
+}
+
+.mode-btn.active {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(168, 85, 247, 0.3));
+  border-color: rgba(99, 102, 241, 0.6);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.3);
+}
+
+.mode-btn.cinema-mode-btn.active {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.35), rgba(245, 158, 11, 0.35));
+  border-color: rgba(239, 68, 68, 0.6);
+  box-shadow: 0 0 14px rgba(239, 68, 68, 0.4);
+}
+
+.mode-btn.brutal-mode-btn.active {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.35), rgba(244, 63, 94, 0.35));
+  border-color: rgba(244, 63, 94, 0.6);
+  box-shadow: 0 0 14px rgba(244, 63, 94, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   6. Quick Question Chips
+   -------------------------------------------------------------------------- */
+.quick-questions-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 2px 4px;
+}
+
+.quick-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #818cf8;
+  white-space: nowrap;
+}
+
+.quick-chips {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+}
+
+.chip-btn {
+  background: rgba(30, 41, 59, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #d1d5db;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition-fast);
+}
+
+.chip-btn:hover {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: rgba(99, 102, 241, 0.4);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   7. Main Chat Stream Window
+   -------------------------------------------------------------------------- */
+.chat-container {
+  flex: 1;
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: rgba(11, 15, 25, 0.6);
+}
+
+/* Chat Message Bubbles */
+.message {
+  display: flex;
+  gap: 12px;
+  max-width: 85%;
+  animation: fadeInMsg 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeInMsg {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.user-message {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.ai-message {
+  align-self: flex-start;
+}
+
+.welcome-card {
+  max-width: 100%;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.5), rgba(15, 23, 42, 0.6));
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.message-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid var(--glass-border);
+}
+
+.ai-message .message-avatar {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.4);
+}
+
+.user-message .message-avatar {
+  background: linear-gradient(135deg, #ec4899, #f43f5e);
+  box-shadow: 0 0 10px rgba(236, 72, 153, 0.4);
+}
+
+.message-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.message-sender {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.active-mode-badge {
+  font-size: 0.7rem;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1px 6px;
+  border-radius: 10px;
+  color: #a5b4fc;
+}
+
+.message-content {
+  padding: 14px 18px;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.user-message .message-content {
+  background: var(--user-bubble-bg);
+  color: #ffffff;
+  border-bottom-right-radius: 2px;
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+}
+
+.ai-message .message-content {
+  background: var(--ai-bubble-bg);
+  color: var(--text-main);
+  border: 1px solid var(--glass-border);
+  border-bottom-left-radius: 2px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Copy Action Button */
+.message-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.copy-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: var(--transition-fast);
+}
+
+.copy-btn:hover {
+  color: var(--text-main);
+}
+
+/* --------------------------------------------------------------------------
+   8. Uselessness Meter Card
+   -------------------------------------------------------------------------- */
+.uselessness-card {
+  margin-top: 10px;
+  background: linear-gradient(135deg, rgba(17, 24, 39, 0.9), rgba(31, 41, 55, 0.8));
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.useless-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.useless-title {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #fbbf24;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.useless-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-label-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.progress-bar-bg {
+  width: 100%;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-fill.useless-fill {
+  background: linear-gradient(90deg, #f59e0b, #ef4444);
+}
+
+.progress-fill.help-fill {
+  background: linear-gradient(90deg, #10b981, #3b82f6);
+}
+
+/* --------------------------------------------------------------------------
+   9. Typing Indicator
+   -------------------------------------------------------------------------- */
+.typing-indicator-container {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.typing-indicator-container.hidden {
+  display: none;
+}
+
+.typing-bubble {
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: #a5b4fc;
+  border-radius: 50%;
+  animation: typingBounce 1.4s infinite ease-in-out both;
+}
+
+.dot:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typingBounce {
+
+  0%,
+  80%,
+  100% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+
+  40% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+.typing-text {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   10. Input Bar Section
+   -------------------------------------------------------------------------- */
+.input-container {
+  border-radius: var(--radius-lg);
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: linear-gradient(135deg, rgba(20, 27, 45, 0.9), rgba(15, 20, 32, 0.95));
+}
+
+.chat-form {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.input-wrapper {
+  flex: 1;
+  position: relative;
+}
+
+#userInput {
+  width: 100%;
+  background: rgba(10, 14, 23, 0.8);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  color: var(--text-main);
+  font-family: var(--font-family);
+  font-size: 0.95rem;
+  resize: none;
+  max-height: 120px;
+  outline: none;
+  transition: var(--transition-fast);
+}
+
+#userInput:focus {
+  border-color: rgba(99, 102, 241, 0.6);
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.25);
+  background: rgba(15, 21, 35, 0.9);
+}
+
+#userInput::placeholder {
+  color: var(--text-dim);
+}
+
+.send-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  border: none;
+  color: #ffffff;
+  padding: 12px 22px;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+  height: 46px;
+}
+
+.send-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+  background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+}
+
+.send-btn:active {
+  transform: translateY(0);
+}
+
+.send-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.input-footer-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  padding: 0 4px;
+}
+
+kbd {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-border);
+  border-radius: 4px;
+  padding: 1px 4px;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.useless-counter-badge {
+  font-weight: 700;
+  color: #f59e0b;
+}
+
+/* --------------------------------------------------------------------------
+   11. Responsive Media Queries
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .app-container {
+    height: 100vh;
+    margin: 0;
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .app-header {
+    padding: 10px 14px;
+    flex-wrap: wrap;
+  }
+
+  .avatar-logo {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+  }
+
+  .app-title {
+    font-size: 1.25rem;
+  }
+
+  .tagline {
+    font-size: 0.75rem;
+  }
+
+  .header-actions {
+    margin-left: auto;
+  }
+
+  .icon-btn .btn-text {
+    display: none;
+  }
+
+  .clear-btn {
+    padding: 6px 10px;
+    font-size: 0.78rem;
+  }
+
+  .message {
+    max-width: 92%;
+  }
+
+  .quick-questions-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .send-btn .send-text {
+    display: none;
+  }
+
+  .send-btn {
+    padding: 12px 16px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   12. Meme Generator & Generated Image Styles
+   -------------------------------------------------------------------------- */
+.chip-btn.meme-gen-btn {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.35), rgba(168, 85, 247, 0.35));
+  border-color: rgba(236, 72, 153, 0.6);
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 0 12px rgba(236, 72, 153, 0.3);
+}
+
+.chip-btn.meme-gen-btn:hover {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.5), rgba(168, 85, 247, 0.5));
+  border-color: rgba(236, 72, 153, 0.8);
+  box-shadow: 0 0 18px rgba(236, 72, 153, 0.5);
+}
+
+.meme-image-card {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(236, 72, 153, 0.4);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.meme-img-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  background: #000000;
+}
+
+.meme-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.meme-img:hover {
+  transform: scale(1.02);
+}
+
+.meme-info-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.meme-prompt-tag {
+  font-weight: 700;
+  color: #f59e0b;
+}
+
+.download-btn {
+  background: rgba(99, 102, 241, 0.2);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: var(--transition-fast);
+}
+
+.download-btn:hover {
+  background: rgba(99, 102, 241, 0.4);
+  border-color: rgba(99, 102, 241, 0.7);
+}
+
+/* Header Meme Action Button */
+.meme-header-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.3), rgba(168, 85, 247, 0.3));
+  border: 1px solid rgba(236, 72, 153, 0.5);
+  color: #ffffff;
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(236, 72, 153, 0.3);
+  transition: var(--transition-fast);
+}
+
+.meme-header-btn:hover {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.5), rgba(168, 85, 247, 0.5));
+  border-color: rgba(236, 72, 153, 0.8);
+  transform: translateY(-1px);
+  box-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
+}
+
+/* Meme Modal Backdrop */
+.meme-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(7, 9, 14, 0.85);
+  backdrop-filter: blur(16px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: fadeInModal 0.25s ease-out;
+}
+
+.meme-modal-backdrop.hidden {
+  display: none;
+}
+
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.meme-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  background: linear-gradient(135deg, rgba(23, 31, 49, 0.95), rgba(15, 20, 32, 0.98));
+  border: 1px solid rgba(236, 72, 153, 0.4);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+  background: rgba(244, 63, 94, 0.3);
+  color: #ffffff;
+}
+
+.meme-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.meme-modal-icon {
+  font-size: 32px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ec4899, #8b5cf6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(236, 72, 153, 0.4);
+}
+
+.meme-modal-titles h2 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffffff, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.meme-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.meme-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input-group label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #f59e0b;
+  margin-bottom: 6px;
+  display: block;
+}
+
+#memeIdeaInput {
+  width: 100%;
+  background: rgba(10, 14, 23, 0.9);
+  border: 1px solid rgba(236, 72, 153, 0.3);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  color: var(--text-main);
+  font-family: var(--font-family);
+  font-size: 0.92rem;
+  resize: none;
+  outline: none;
+  transition: var(--transition-fast);
+}
+
+#memeIdeaInput:focus {
+  border-color: rgba(236, 72, 153, 0.7);
+  box-shadow: 0 0 15px rgba(236, 72, 153, 0.3);
+}
+
+.generate-meme-action-btn {
+  background: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
+  border: none;
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  font-weight: 800;
+  font-size: 0.98rem;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(236, 72, 153, 0.4);
+  transition: var(--transition-fast);
+}
+
+.generate-meme-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(236, 72, 153, 0.6);
+}
+
+/* Meme Loading Box */
+.meme-loading-box {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px dashed rgba(236, 72, 153, 0.4);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.meme-loading-box.hidden {
+  display: none;
+}
+
+.spinner-dot-pulse {
+  display: flex;
+  gap: 8px;
+}
+
+.pulse-dot {
+  width: 12px;
+  height: 12px;
+  background: #ec4899;
+  border-radius: 50%;
+  animation: pulseSpin 1.2s infinite ease-in-out both;
+}
+
+.pulse-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.pulse-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes pulseSpin {
+
+  0%,
+  80%,
+  100% {
+    transform: scale(0.6);
+    opacity: 0.3;
+  }
+
+  40% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+.loading-status-text {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #f472b6;
+}
+
+/* Meme Result Canvas Container */
+.meme-result-box {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.meme-result-box.hidden {
+  display: none;
+}
+
+.meme-canvas-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 2px solid rgba(236, 72, 153, 0.5);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+  background: #000000;
+}
+
+#memeDisplayImg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* HTML/CSS Text Overlay on Generated Image */
+.meme-overlay-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 16px 14px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.5) 70%, transparent 100%);
+  color: #ffffff;
+  font-family: 'Noto Sans Malayalam', 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 1.15rem;
+  text-align: center;
+  line-height: 1.4;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 0 2px 8px rgba(0, 0, 0, 0.8);
+  word-break: break-word;
+}
+
+/* AI Generated Meme Caption (below image, prominent display) */
+.meme-ai-caption {
+  padding: 14px 16px;
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.12), rgba(139, 92, 246, 0.12));
+  border-left: 3px solid #f472b6;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-family: 'Noto Sans Malayalam', 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fbbf24;
+  line-height: 1.5;
+  font-style: italic;
+  text-align: center;
+  margin-top: -2px;
+}
+
+/* Action Buttons Grid */
+.meme-modal-action-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.meme-act-btn {
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid var(--glass-border);
+  transition: var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.another-btn {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-main);
+}
+
+.another-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.meme-act-btn.copy-btn {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: rgba(99, 102, 241, 0.4);
+  color: #a5b4fc;
+}
+
+.meme-act-btn.copy-btn:hover {
+  background: rgba(99, 102, 241, 0.4);
+  color: #ffffff;
+}
+
+.save-btn {
+  background: linear-gradient(135deg, #10b981, #059669);
+  border: none;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.save-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.5);
+}
+
+/* --------------------------------------------------------------------------
+   13. TMDB Movie Character Reaction Card
+   -------------------------------------------------------------------------- */
+.tmdb-reaction-card {
+  margin-top: 12px;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.85));
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  animation: fadeInMsg 0.4s ease-out;
+}
+
+.tmdb-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 6px;
+}
+
+.tmdb-title-tag {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #fbbf24;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+}
+
+.tmdb-source-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  background: rgba(59, 130, 246, 0.2);
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+
+.tmdb-img-box {
+  width: 100%;
+  max-width: 380px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #000000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.tmdb-img-box img {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+.tmdb-caption-text {
+  font-family: 'Noto Sans Malayalam', 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid #f59e0b;
+}
+
+.tmdb-credit-info {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tmdb-actor-name {
+  color: #a5b4fc;
+  font-weight: 700;
+}

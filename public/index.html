@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ml">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KUNJIRAMAN AI - ചോദ്യം എന്തായാലും, കളിയാക്കൽ ഉറപ്പ് 😎</title>
+
+  <!-- SEO & Meta Tags -->
+  <meta name="description"
+    content="A funny Malayalam/Manglish AI Chatbot college hackathon project for Useless Project. Teasing answers with genuine help underneath!">
+  <meta name="theme-color" content="#0d1117">
+
+  <!-- Favicon / Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Ambient Gradient Background Shapes -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- App Wrapper -->
+  <div class="app-container">
+
+    <!-- HEADER -->
+    <header class="app-header glass-panel">
+      <div class="header-brand">
+        <div class="avatar-logo pulse-avatar">🤖</div>
+        <div class="brand-text">
+          <div class="title-row">
+            <h1 class="app-title">KUNJIRAMAN AI</h1>
+            <span class="sub-title-badge">KUNJIRAMAN AI v1.0</span>
+            <span class="hackathon-tag">🏆 Useless Project</span>
+          </div>
+          <p class="tagline">"ചോദ്യം എന്തായാലും, കളിയാക്കൽ ഉറപ്പ് 😎"</p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <a href="/economy.html" class="simulator-header-btn"
+          style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4); text-decoration: none;"
+          title="Open Pazham Pori Stock Market Terminal">
+          <span class="btn-icon">🍌</span>
+          <span class="btn-text">PAZHAM PORI ECONOMY</span>
+          <span class="new-badge" style="background: #10b981; color: #fff;">LIVE 📈</span>
+        </a>
+
+        <button id="openMemeModalBtn" class="meme-header-btn" title="Open Meme Generator Factory">
+          <span class="btn-icon">😂</span>
+          <span class="btn-text">GENERATE MEME PHOTO</span>
+        </button>
+        <button id="soundToggleBtn" class="icon-btn" title="Toggle Sound Effects">
+          <span class="btn-icon">🔊</span>
+          <span class="btn-text">Sound ON</span>
+        </button>
+        <button id="clearChatBtn" class="clear-btn" title="Reset current conversation">
+          <span class="btn-icon">🗑️</span> Clear Chat
+        </button>
+      </div>
+    </header>
+
+    <!-- PERSONALITY MODE SELECTOR -->
+    <section class="mode-bar-container glass-panel">
+      <div class="mode-label">
+        <span>🎭 Personality:</span>
+      </div>
+      <div class="mode-buttons" id="modeSelector">
+        <button class="mode-btn active" data-mode="chunk">
+          <span class="mode-icon">😎</span>
+          <span class="mode-title">Savage Mode</span>
+        </button>
+        <button class="mode-btn" data-mode="roast">
+          <span class="mode-icon">😂</span>
+          <span class="mode-title"> Nirthi Pooda</span>
+        </button>
+        <button class="mode-btn cinema-mode-btn" data-mode="cinema">
+          <span class="mode-icon">🎬</span>
+          <span class="mode-title">Cinema Mode</span>
+        </button>
+        <button class="mode-btn" data-mode="teacher">
+          <span class="mode-icon">🧑‍🏫</span>
+          <span class="mode-title">Teacher Mode</span>
+        </button>
+        <button class="mode-btn brutal-mode-btn" data-mode="brutal">
+          <span class="mode-icon">💀</span>
+          <span class="mode-title">Brutal Mode</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- QUICK QUESTION SUGGESTIONS & MEME GENERATOR -->
+    <section class="quick-questions-wrapper">
+      <div class="quick-title">⚡ Quick Actions:</div>
+      <div class="quick-chips" id="quickQuestions">
+        <button class="chip-btn meme-gen-btn" id="generateMemeBtn">
+          🎨 Generate Meme Image 😂
+        </button>
+        <button class="chip-btn" data-question="നാളെ exam pass ആകുമോ? 😭">
+          "നാളെ exam pass ആകുമോ? 😭"
+        </button>
+        <button class="chip-btn" data-question="Assignment എങ്ങനെ തീർക്കും?">
+          "Assignment എങ്ങനെ തീർക്കും?"
+        </button>
+        <button class="chip-btn" data-question="ഇന്ന് college പോണോ?">
+          "ഇന്ന് college പോണോ?"
+        </button>
+        <button class="chip-btn" data-question="ഞാൻ ഇന്ന് പഠിക്കണോ?">
+          "ഞാൻ ഇന്ന് പഠിക്കണോ?"
+        </button>
+        <button class="chip-btn" data-question="എനിക്ക് എന്തെങ്കിലും advice താ">
+          "എനിക്ക് എന്തെങ്കിലും advice താ"
+        </button>
+      </div>
+    </section>
+
+    <!-- CHAT CONTAINER -->
+    <main class="chat-container glass-panel" id="chatContainer">
+      <!-- Welcome Message -->
+      <div class="message ai-message welcome-card">
+        <div class="message-avatar">🤖</div>
+        <div class="message-body">
+          <div class="message-sender">
+            <span class="sender-name">KUNJIRAMAN AI</span>
+            <span class="active-mode-badge" id="currentModeBadge">😎 ചങ്ക് Mode</span>
+          </div>
+          <div class="message-content">
+            <p>എന്താടാ മച്ചാനേ... സുഖമല്ലേ? 👋</p>
+            <p>കോളേജ് സംശയങ്ങൾ, Exam പേടി, Assignment മുങ്ങൽ... ചോദ്യം എന്താണെങ്കിലും ചോദിച്ചോ. നല്ല കളിയാക്കലും കൂടെ
+              ചെറിയ ചില ഉപദേശങ്ങളും ഫ്രീ ആയി തരാം! 😎</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Messages Stream will be appended here dynamically -->
+
+      <!-- Typing Indicator (Hidden by default) -->
+      <div class="typing-indicator-container hidden" id="typingIndicator">
+        <div class="message-avatar">🤖</div>
+        <div class="typing-bubble glass-panel">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="typing-text">കുഞ്ചിരാമൻ ആലോചിക്കുന്നു... 🧠💭</span>
+        </div>
+      </div>
+    </main>
+
+    <!-- INPUT BAR -->
+    <footer class="input-container glass-panel">
+      <form id="chatForm" class="chat-form">
+        <div class="input-wrapper">
+          <textarea id="userInput" placeholder="ഡാ, എന്തെങ്കിലും ചോദിക്ക്... (e.g. Nale exam pass aakumo?)" rows="1"
+            autocomplete="off"></textarea>
+        </div>
+        <button type="submit" id="sendBtn" class="send-btn">
+          <span class="send-text">Send</span>
+          <span class="send-icon">🚀</span>
+        </button>
+      </form>
+      <div class="input-footer-info">
+        <span>Press <kbd>Enter</kbd> to send, <kbd>Shift + Enter</kbd> for newline</span>
+        <span class="useless-counter-badge" id="totalUselessnessCounter">⚡ Useless Power: 100%</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- MEME GENERATOR MODAL PANEL -->
+  <div id="memeModal" class="meme-modal-backdrop hidden">
+    <div class="meme-modal-card glass-panel">
+      <button id="closeMemeModalBtn" class="modal-close-btn">&times;</button>
+
+      <div class="meme-modal-header">
+        <div class="meme-modal-icon">😂</div>
+        <div class="meme-modal-titles">
+          <h2>😂 MEME PHOTO FACTORY</h2>
+          <p class="meme-subtitle">"Turn your useless thought into an useless picture."</p>
+        </div>
+      </div>
+
+      <div class="meme-modal-body">
+        <div class="input-group">
+          <label for="memeIdeaInput">Enter your Meme Idea / Scene:</label>
+          <textarea id="memeIdeaInput"
+            placeholder="Da, entha meme undakkanam? 😂 (e.g. Exam nale aanu, njan padichittilla)" rows="3"></textarea>
+        </div>
+
+        <button id="submitMemeBtn" class="generate-meme-action-btn">
+          <span>🔥 Generate Meme</span>
+        </button>
+
+        <!-- Loading Animation State -->
+        <div id="memeFactoryLoading" class="meme-loading-box hidden">
+          <div class="spinner-dot-pulse">
+            <span class="pulse-dot"></span>
+            <span class="pulse-dot"></span>
+            <span class="pulse-dot"></span>
+          </div>
+          <p class="loading-status-text">Kunjiraman AI meme factory-il pani nadakkunnu... 🏭😂</p>
+        </div>
+
+        <!-- Result Display Container -->
+        <div id="memeResultContainer" class="meme-result-box hidden">
+          <div class="meme-canvas-wrapper" id="memeCanvasWrapper">
+            <img id="memeDisplayImg" src="" alt="Generated Meme" />
+            <div id="memeOverlayCaption" class="meme-overlay-text">
+              <!-- Caption text overlaid on top -->
+            </div>
+          </div>
+
+          <div class="meme-modal-action-buttons">
+            <button id="memeAnotherBtn" class="meme-act-btn another-btn">
+              🔄 Another
+            </button>
+            <button id="memeCopyCaptionBtn" class="meme-act-btn copy-btn">
+              📋 Copy Caption
+            </button>
+            <button id="memeSaveBtn" class="meme-act-btn save-btn">
+              ⬇️ Save Meme
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KERALA COLLEGE SIMULATOR MODAL OVERLAY -->
+  <div id="simulatorModal" class="simulator-modal-overlay hidden">
+    <div class="simulator-modal-card glass-panel">
+      <!-- Modal Header -->
+      <div class="sim-header">
+        <div class="sim-header-title">
+          <h2>🏫 KERALA COLLEGE SIMULATOR™</h2>
+          <p class="sim-subtitle">"One day. Zero productivity. Somehow you survived."</p>
+        </div>
+        <button id="closeSimModalBtn" class="close-modal-btn">&times;</button>
+      </div>
+
+      <!-- VIEW 1: START SCREEN -->
+      <div id="simStartView" class="sim-view">
+        <div class="sim-preview-box">
+          <div class="sim-stat-preview-grid">
+            <div class="sim-preview-item">
+              <span class="p-icon">😴</span>
+              <span class="p-label">SLEEP:</span>
+              <span class="p-value">3h 17m</span>
+            </div>
+            <div class="sim-preview-item">
+              <span class="p-icon">📚</span>
+              <span class="p-label">ASSIGNMENTS:</span>
+              <span class="p-value">7 pending</span>
+            </div>
+            <div class="sim-preview-item">
+              <span class="p-icon">📉</span>
+              <span class="p-label">ATTENDANCE:</span>
+              <span class="p-value">43%</span>
+            </div>
+            <div class="sim-preview-item">
+              <span class="p-icon">💰</span>
+              <span class="p-label">MONEY:</span>
+              <span class="p-value">₹87</span>
+            </div>
+            <div class="sim-preview-item">
+              <span class="p-icon">🔋</span>
+              <span class="p-label">PHONE:</span>
+              <span class="p-value">19%</span>
+            </div>
+            <div class="sim-preview-item">
+              <span class="p-icon">🧠</span>
+              <span class="p-label">BRAIN:</span>
+              <span class="p-value">Loading...</span>
+            </div>
+          </div>
+          <div class="sim-disclaimer">
+            ⚠️ Simulation accuracy: <em>scientifically questionable.</em>
+          </div>
+        </div>
+        <button id="startSimBtn" class="sim-primary-btn">
+          ▶ START COLLEGE DAY
+        </button>
+      </div>
+
+      <!-- VIEW 2: PLAYER SETUP (ARCHETYPE SELECTION) -->
+      <div id="simSetupView" class="sim-view hidden">
+        <h3 class="setup-heading">CHOOSE YOUR STUDENT TYPE</h3>
+        <p class="setup-sub">Select who you are today on campus:</p>
+
+        <div class="archetypes-grid" id="archetypesGrid">
+          <!-- Archetype cards dynamically rendered via JS -->
+        </div>
+
+        <div class="setup-actions">
+          <button id="randomArchetypeBtn" class="sim-sec-btn">
+            🎲 RANDOM STUDENT
+          </button>
+          <button id="confirmArchetypeBtn" class="sim-primary-btn" disabled>
+            🚀 LET'S SURVIVE THE DAY
+          </button>
+        </div>
+      </div>
+
+      <!-- VIEW 3: GAMEPLAY DASHBOARD -->
+      <div id="simGameView" class="sim-view hidden">
+        <!-- Live Time & Scenario Bar -->
+        <div class="sim-top-bar">
+          <span id="simTimeBadge" class="sim-time-tag">🚨 08:30 AM</span>
+          <span id="simStepCounter" class="sim-step-tag">Step 1 of 5</span>
+        </div>
+
+        <!-- Live Game Stats Grid -->
+        <div class="sim-live-stats-bar">
+          <div class="sim-stat-pill" title="Attendance">
+            <span class="st-icon">📉</span> <span class="st-name">Att:</span> <span id="stAttendance"
+              class="st-val">43%</span>
+          </div>
+          <div class="sim-stat-pill" title="Brain Power">
+            <span class="st-icon">🧠</span> <span class="st-name">Brain:</span> <span id="stBrain"
+              class="st-val">50</span>
+          </div>
+          <div class="sim-stat-pill" title="Sleep / Fatigue">
+            <span class="st-icon">😴</span> <span class="st-name">Sleep:</span> <span id="stSleep"
+              class="st-val">35</span>
+          </div>
+          <div class="sim-stat-pill" title="Money (₹)">
+            <span class="st-icon">💰</span> <span class="st-name">Money:</span> <span id="stMoney"
+              class="st-val">₹87</span>
+          </div>
+          <div class="sim-stat-pill" title="Assignments">
+            <span class="st-icon">📚</span> <span class="st-name">Tasks:</span> <span id="stAssignments"
+              class="st-val">7</span>
+          </div>
+          <div class="sim-stat-pill" title="Happiness">
+            <span class="st-icon">😂</span> <span class="st-name">Happy:</span> <span id="stHappiness"
+              class="st-val">50</span>
+          </div>
+        </div>
+
+        <!-- Story Event Card -->
+        <div class="sim-event-card">
+          <h3 id="simEventTitle" class="event-title">The Morning Alarm Dilemma</h3>
+          <p id="simEventSubtitle" class="event-subtitle">First class is in 10 minutes...</p>
+          <div id="simEventDialogue" class="event-dialogue">
+            "Mone... innu attendance kittiyillel condonation fee..."
+          </div>
+
+          <!-- Consequence Alert Box (Hidden initially) -->
+          <div id="simConsequenceBox" class="sim-consequence-alert hidden">
+            <span class="cq-icon">📢</span> <span id="simConsequenceText">What happened...</span>
+          </div>
+
+          <!-- Choices Container -->
+          <div id="simChoicesGrid" class="choices-grid">
+            <!-- Dynamic choice buttons rendered via JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW 4: SURVIVAL REPORT CARD -->
+      <div id="simReportView" class="sim-view hidden">
+        <div class="survival-certificate">
+          <div class="cert-header">
+            <span class="cert-stamp">GRADUATED</span>
+            <h3 class="cert-title">🏫 KERALA COLLEGE SURVIVAL CERTIFICATE</h3>
+            <p class="cert-sub">Issued under the authority of Useless Project 2026</p>
+          </div>
+
+          <div class="cert-body">
+            <div class="cert-user-info">
+              <span id="repPlayerIcon" class="rep-icon">📚</span>
+              <h4 id="repPlayerTitle" class="rep-title">Phantom Student</h4>
+              <span id="repBadge" class="rep-badge">💀 HOD's Wanted List</span>
+            </div>
+
+            <div class="cert-grade-box">
+              <span class="grade-label">FINAL SURVIVAL GRADE:</span>
+              <span id="repGrade" class="grade-val">F (Condonation Fee Pending)</span>
+            </div>
+
+            <div class="cert-remark-box">
+              <span class="remark-title">HOD REMARKS:</span>
+              <p id="repRemark" class="remark-text">"Principal room-il 3 mani samayam aajaaraakanam."</p>
+            </div>
+
+            <!-- Final Stats Summary -->
+            <div class="cert-stats-summary" id="repStatsSummary">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <div class="cert-actions">
+            <button id="simReplayBtn" class="sim-primary-btn">
+              🔄 PLAY AGAIN
+            </button>
+            <button id="simAskAIBtn" class="sim-sec-btn">
+              💬 ASK KUNJIRAMAN AI FOR ADVICE
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="collegeSimulator.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
