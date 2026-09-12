@@ -1,6 +1,6 @@
 <img width="1280" height="640" alt="Pazham Pori Economy Terminal Banner" src="docs/screenshots/terminal_dashboard.png" />
 
-# PAZHAM PORI ECONOMY™ & KERALA COLLEGE SIMULATOR™ 🍌📈🏫
+# PAZHAM PORI ECONOMY™ 🍌📈
 
 ## Basic Details
 ### Team Name: Team Pazham Pori
@@ -11,13 +11,13 @@
 - Member 3: Pazham Pori Engine - Volatile Snack Equity Bot
 
 ### Project Description
-Kerala's most unnecessary financial stock market simulation where local tea-shop snacks (*Pazham Pori, Porotta, Chaya, Parippu Vada, Bhaji, Sambar*) behave like volatile Wall Street equities, combined with an absurd interactive Kerala College Life Survival Game and Groq-powered Llama Malayalam AI Meme Engine.
+Kerala's most unnecessary financial stock market simulation where local tea-shop snacks (*Pazham Pori, Porotta, Chaya, Parippu Vada, Bhaji, Sambar*) behave like volatile Wall Street equities, combined with a Groq-powered Llama Malayalam AI Meme Engine.
 
 ### The Problem (that doesn't exist)
-Kerala tea-shop snack prices suffer from rain-induced banana supply shocks, chaya-dip volatility, and midday college canteen surges, yet traders lacked a Bloomberg Terminal to short-sell Pazham Pori, compute Porotta market share, or analyze Parippu Vada debt-to-equity ratios.
+Kerala tea-shop snack prices suffer from rain-induced banana supply shocks, chaya-dip volatility, and midday tea-stall surges, yet traders lacked a Bloomberg Terminal to short-sell Pazham Pori, compute Porotta market share, or analyze Parippu Vada debt-to-equity ratios.
 
 ### The Solution (that nobody asked for)
-A full Bloomberg-style financial web terminal featuring real-time price tickers, HTML5 KSI index charts, live sales-driven market share calculation, interactive scatter plots, trade marketing analytics, Groq Llama Malayalam AI meme generation, and an interactive Kerala College Survival Simulator.
+A full Bloomberg-style financial web terminal featuring real-time price tickers, HTML5 KSI index charts, live sales-driven market share calculation, interactive scatter plots, trade marketing analytics, and Groq Llama Malayalam AI meme generation.
 
 ## Technical Details
 ### Technologies/Components Used
@@ -67,9 +67,6 @@ For Software:
 ![Market Share Analytics](docs/screenshots/market_share_analytics.png)
 *Live Sales-Based Market Share Dashboard featuring Leaderboard Rankings, Market Share vs Price Scatter Plot, and Trade Marketing Metrics.*
 
-![Kerala College Simulator](docs/screenshots/college_simulator.png)
-*🏫 Kerala College Simulator™ — Absurd single-day survival mini-game with Malayalam dialogs, stats, and random campus events.*
-
 ![AI Malayalam Meme Generator](docs/screenshots/ai_meme_generator.png)
 *🤖 Kunjiraman AI — Groq Llama Sarcastic Malayalam Meme Engine integrated with TMDB Movie Reaction Assets.*
 
@@ -80,10 +77,10 @@ For Software:
 ### Project Demo
 # Video
 [Watch Pazham Pori Economy Demo Video](https://github.com/ishan09krishna-cpu/pazham-pori-economy)
-*Demonstrates live stock trading, snack sales market share calculations, Groq AI Malayalam memes, and College Survival Game.*
+*Demonstrates live stock trading, snack sales market share calculations, and Groq AI Malayalam memes.*
 
 ## Team Contributions
-- **Ishan Krishna**: Core architecture, Bloomberg Terminal UI, Market Share Engine, Groq AI & TMDB Integration, College Simulator implementation.
+- **Ishan Krishna**: Core architecture, Bloomberg Terminal UI, Market Share Engine, Groq AI & TMDB Integration.
 - **Kunjiraman AI**: Sarcastic Malayalam responses and tea-shop financial wisdom.
 - **Pazham Pori Bot**: Volatile market pricing simulation and snack supply management.
 
